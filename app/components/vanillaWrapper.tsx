@@ -4,8 +4,12 @@ import { useEffect, useRef } from 'react';
 
 // 한번만 그 함수를 실행해주는 목적으로 wrapper를 만듬
 const VanillaWrapper = ({
+	title = '',
+	subTitle = '',
 	initiator,
 }: {
+	title?: string;
+	subTitle?: string;
 	initiator: (wrapper: HTMLDivElement) => void;
 }) => {
 	const wrapper = useRef<HTMLDivElement>(null);
@@ -18,7 +22,16 @@ const VanillaWrapper = ({
 		}
 	}, [initiator]);
 
-	return <div ref={wrapper} />;
+	return (
+		<>
+			{title && (
+				<h3>
+					{title}. Vanilla {subTitle && <sub>{subTitle}</sub>}
+				</h3>
+			)}
+			<div ref={wrapper} />
+		</>
+	);
 };
 
 export default VanillaWrapper;

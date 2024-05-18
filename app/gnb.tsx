@@ -22,7 +22,7 @@ const ParentGnbItem = ({
 }) => {
 	// children 중에 하나가 currentPath에 들어있음됨
 	const open = children.includes(currentPath);
-	console.log(children, open);
+
 	return (
 		<li
 			className={classNames('parent', `items-${children.length}`, {

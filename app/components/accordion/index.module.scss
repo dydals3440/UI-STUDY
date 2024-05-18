@@ -1,0 +1,98 @@
+.Accordions {
+	.container {
+		// 전체 감싸는 클래스
+		border: 1px solid #ccc;
+		border-bottom: 0;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		width: 100%;
+		overflow: hidden;
+	}
+	.tab {
+		// 타이틀 영역
+		padding: 15px;
+		border-bottom: 1px solid #ccc;
+		cursor: pointer;
+
+		&::before {
+			content: '+';
+			margin: 0 8px 0 -5px;
+		}
+	}
+
+	.description {
+		// 상세내용 영역
+		padding: 15px;
+		border-bottom: 1px solid #ccc;
+		background-color: #eff;
+	}
+
+	.item {
+		&.current {
+			.tab {
+				background-color: #ace;
+
+				&::before {
+					content: '-';
+				}
+			}
+		}
+	}
+
+	.item2 {
+		.description {
+			display: none;
+		}
+		&.current {
+			.description {
+				display: block;
+			}
+		}
+	}
+
+	.item3 {
+		overflow: hidden;
+		.description {
+			padding: 0 15px;
+			border-bottom-width: 0;
+			max-height: 0;
+			transition: ease 0.3s;
+		}
+		&.current .description {
+			padding: 15px;
+			border-bottom-width: 1px;
+			// 100vh 화면에 보여지는 뷰포트 하이트, 이걸 최대값으로 주었으니, 넘는 경우 스무스, 넘지 않는 경우는 높이값을 최종 종착지로 인식하는 높이를 최댓값으로 인식하기에 속도가 안맞음.
+			max-height: 100vh;
+		}
+	}
+
+	.item5 {
+		overflow: hidden;
+		.input {
+			display: none;
+		}
+		.tab {
+			display: block;
+		}
+
+		.description {
+			padding: 0 15px;
+			border-bottom-width: 0;
+			max-height: 0;
+			transition: ease 0.3s;
+		}
+		.input:checked {
+			// ~ siblings 다음에 따라오는 근처에 있는 다른거
+			// + 바로 뒤에 있는 것이다.
+			+ .tab {
+				background-color: #ace;
+			}
+			~ .description {
+				padding: 15px;
+				border-bottom-width: 1px;
+				max-height: 300px;
+			}
+		}
+	}
+}
