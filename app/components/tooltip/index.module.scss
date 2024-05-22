@@ -42,8 +42,8 @@
 
 	.details {
 		position: relative;
-		margin-right: 10px;
 		display: inline-block;
+		margin-right: 10px;
 		border: 0;
 		outline: 0;
 		background-color: transparent;
@@ -56,9 +56,8 @@
 			display: none;
 		}
 		&::after {
-			display: inline-block;
 			content: '!';
-			text-align: center;
+			display: inline-block;
 			border: 1px solid #ccc;
 			width: 1rem;
 			height: 1rem;
@@ -67,6 +66,7 @@
 			vertical-align: text-bottom;
 			border-radius: 50%;
 			margin-left: 5px;
+			text-align: center;
 		}
 	}
 }

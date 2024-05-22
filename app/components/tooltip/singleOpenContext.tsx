@@ -23,6 +23,8 @@ const SingleOpenContextProvider = ({ children }: { children: ReactNode }) => {
 export default SingleOpenContextProvider;
 
 export const useSingleOpen = (id: string) => {
+	// dispatch === setCurrentId
 	const [currentId, dispatch] = useContext(SingleOpenContext);
+
 	return [id === currentId, dispatch] as const;
 };
