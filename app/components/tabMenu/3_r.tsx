@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import cx from './cx';
-import data from './data';
+import data from '../tooltip/data';
 
 const TabItem = ({
 	id,

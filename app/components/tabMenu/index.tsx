@@ -1,8 +1,8 @@
-import TabMenu1 from './1_r';
-import TabMenu2 from './2_r';
-import TabMenu3 from './3_r';
-import TabMenu4V from './4_v';
-import cx from './cx';
+import TabMenu1 from '../tabMenu/1_r';
+import TabMenu2 from '../tabMenu/2_r';
+import TabMenu3 from '../tabMenu/3_r';
+import TabMenu4V from '../tabMenu/4_v';
+import cx from '../tabMenu/cx';
 
 const TabMenus = () => {
 	return (

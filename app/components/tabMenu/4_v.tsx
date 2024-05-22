@@ -1,5 +1,5 @@
 import cx from './cx';
-import data from './data';
+import data from '../tooltip/data';
 import VanillaWrapper from '../vanillaWrapper';
 
 const buildTabMenus = ({ id, title }: { id: string; title: string }) => {
@@ -33,6 +33,7 @@ const initiator = (wrapper: HTMLDivElement) => {
 	$tabUl.classList.add(cx('tabList'));
 
 	const $tabList = data.map(buildTabMenus);
+
 	const $desc = data.map(buildDescriptions);
 
 	$tabUl.append(...$tabList);
