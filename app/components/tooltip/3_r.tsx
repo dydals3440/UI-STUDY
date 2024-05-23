@@ -45,6 +45,7 @@ const Tooltip3 = () => {
 			// 클릭한 대상이 summary에 해당하는지 체크 (맞으면 서머리열고, 아니면 다 닫음)
 			// 정확히 타게팅 위해 data-tooltip을 줌
 			const isSummary = !!target.dataset.tooltipSummary;
+
 			document.querySelectorAll('[data-tooltip]').forEach((elem) => {
 				if (elem !== target.parentElement) elem.removeAttribute('open');
 			});
