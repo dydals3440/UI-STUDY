@@ -1,10 +1,15 @@
-import { useLayoutEffect, useRef, useState } from 'react';
-import ViewportContextProvider, { useViewPortRect } from './viewportContext';
+import { useRef } from 'react';
+import ViewportContextProvider from '../../context/viewportContext';
 import cx from './cx';
 import data from './data';
+import useStyleInView from './useStyleInView';
 
-type Style = Partial<Record<'left' | 'right' | 'top' | 'bottom', number>>;
-
+const tooltipPosition = {
+	top: '100%',
+	bottom: 20,
+	left: 0,
+	right: 0,
+};
 const Tooltip = ({
 	id,
 	title,
@@ -14,30 +19,14 @@ const Tooltip = ({
 	title: string;
 	description: string;
 }) => {
-	const viewportRect = useViewPortRect();
 	const wrapperRef = useRef<HTMLDetailsElement>(null);
 	const targetRef = useRef<HTMLDivElement>(null);
-	const [style, setStyle] = useState<Style>({});
-
-	useLayoutEffect(() => {
-		if (!wrapperRef.current || !targetRef.current) return;
-		const wrapperRect = wrapperRef.current.getBoundingClientRect();
-		const targetRect = targetRef.current.getBoundingClientRect();
-		const verticalKey =
-			wrapperRect.bottom + targetRect.height < viewportRect.height
-				? 'top'
-				: 'bottom';
-		const horizontalKey =
-			wrapperRect.right + targetRect.width < viewportRect.width
-				? 'left'
-				: 'right';
-		setStyle({
-			[verticalKey]: 0,
-			[verticalKey === 'top' ? 'bottom' : 'top']: 'auto',
-			[horizontalKey]: 0,
-			[horizontalKey === 'left' ? 'right' : 'left']: 'auto',
-		});
-	}, [viewportRect]);
+	// {}는 컴포넌트가 업로드 될 때마다 렌더링 이슈 발생.
+	// Maximum update depth exceeded 렌더링할떄마다 {}이게 새로 만들어지니까.
+	// {}가 렌더링 할 떄 마다 새로만들어지니까, 바끼ㅜㄴ걸로 인식해서 useLayoutEffect가 자꾸 호출됨.
+	// {} 이 부분을 밖으로 뺴주어야함. => 안티패턴
+	// 	const style = useStyleInView(wrapperRef, targetRef, {});
+	const style = useStyleInView(wrapperRef, targetRef, tooltipPosition);
 
 	return (
 		<details className={cx('details')} data-tooltip={id} ref={wrapperRef}>

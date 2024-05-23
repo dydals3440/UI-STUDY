@@ -9,6 +9,7 @@ import {
 type Rect = Pick<DOMRect, 'left' | 'top' | 'width' | 'height'> & {
 	scrollHeight: number;
 };
+
 const DefaultRect: Rect = {
 	top: 0,
 	left: 0,
@@ -50,6 +51,8 @@ const getViewportRect = () => {
 };
 // 13:00
 const subscribe = (callback: () => void) => {
+	// 요소의 크기 변화를 감지
+	// Window.addEventListener의 'resize' 와는 다름.
 	const resizeObserver = new ResizeObserver(callback);
 	window.addEventListener('scroll', callback);
 	resizeObserver.observe(document.body);
