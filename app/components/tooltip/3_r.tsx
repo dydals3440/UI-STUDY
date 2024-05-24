@@ -37,6 +37,7 @@ const Tooltip = ({
 };
 
 const Tooltip3 = () => {
+	// 5번에서도, 연결이되서 (바닐라에서 자바스크립트 처리를 안해도 진행됨)
 	useEffect(() => {
 		// html -> event react -> SyntheticEvent
 		const closeAllToolTip = (e: Event) => {
