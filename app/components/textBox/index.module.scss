@@ -9,4 +9,18 @@
 		resize: none;
 		overflow-y: scroll;
 	}
+
+	.clone {
+		box-sizing: border-box;
+		width: 100%;
+		resize: none;
+		overflow-y: scroll;
+		position: absolute;
+		padding-top: 0;
+		padding-bottom: 0;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 1;
+		left: -9999px;
+	}
 }
