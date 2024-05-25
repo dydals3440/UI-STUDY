@@ -1,4 +1,5 @@
 import Accordions from './components/accordion';
+import LineClamps from './components/lineClamp';
 import TextBox from './components/textBox';
 import ToolTips from './components/tooltip';
 import TabMenus from './components/tooltip';
@@ -9,6 +10,7 @@ const routePaths = [
 	'/tabMenu',
 	'/tooltip',
 	'/textBox',
+	'/lineClamp',
 ] as const;
 
 export type ROUTE_PATH = (typeof routePaths)[number];
@@ -34,7 +36,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
 		key: '/',
 		link: '/',
 		name: 'root',
-		children: ['/accordion', '/tabMenu', '/tooltip', '/textBox'],
+		children: ['/accordion', '/tabMenu', '/tooltip', '/textBox', '/lineClamp'],
 	},
 	'/accordion': {
 		key: '/accordion',
@@ -59,6 +61,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
 		link: '/textBox',
 		name: '04. 텍스트 박스',
 		children: TextBox,
+	},
+	'/lineClamp': {
+		key: '/lineClamp',
+		link: '/lineClamp',
+		name: '05. 말줄임표',
+		children: LineClamps,
 	},
 };
 
