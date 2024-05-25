@@ -35,7 +35,7 @@ const LineClampedText = ({ text }: { text: string }) => {
 	);
 };
 
-const TextBox1 = () => {
+const LineClamp1 = () => {
 	return (
 		<>
 			<h3>
@@ -47,4 +47,4 @@ const TextBox1 = () => {
 		</>
 	);
 };
-export default TextBox1;
+export default LineClamp1;
